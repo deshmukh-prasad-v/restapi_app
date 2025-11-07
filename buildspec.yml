@@ -24,4 +24,5 @@ phases:
 artifacts:
   files:
     - target/*.jar
+    - target/*.war
   discard-paths: yes
