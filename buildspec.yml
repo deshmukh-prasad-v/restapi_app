@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing Maven...
+      - mvn --version
+  pre_build:
+    commands:
+      - echo Pre-build phase: cleaning project
+      - mvn clean
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn package -DskipTests
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Build artifacts created successfully
+
+artifacts:
+  files:
+    - target/*.jar
