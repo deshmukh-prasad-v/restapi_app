@@ -20,5 +20,5 @@ phases:
 
 artifacts:
   files:
-    - src/target/restapi_app-0.0.1-SNAPSHOT.jar
+    - src/target/*.jar
   discard-paths: yes
