@@ -5,18 +5,21 @@ phases:
     commands:
       - echo Installing Maven...
       - mvn --version
+
   pre_build:
     commands:
-      - echo Pre-build phase: cleaning project
+      - echo Cleaning project...
       - mvn clean
+
   build:
     commands:
-      - echo Build started on `date`
+      - echo Building project...
       - mvn package -DskipTests
+
   post_build:
     commands:
-      - echo Build completed on `date`
-      - echo Build artifacts created successfully
+      - echo Build completed successfully on `date`
+      - ls -l target/
 
 artifacts:
   files:
