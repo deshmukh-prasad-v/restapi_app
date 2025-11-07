@@ -1,13 +1,26 @@
 version: 0.2
+
 phases:
+  install:
+    runtime-versions:
+      java: corretto17 # Or your preferred Java version (e.g., corretto11, openjdk17)
+  pre_build:
+    commands:
+      - echo "Entering pre_build phase..."
+      # Add any pre-build commands here, like setting up environment variables or running tests
   build:
     commands:
-      - echo "Starting Maven build"
-      - mvn clean package -DskipTests
-      - echo "Build completed"
-      - ls -la target/  # Debug: list files in target directory
+      - echo "Build started on `date`"
+      - mvn clean package -DskipTests # Build the project, skipping tests for faster build in CI/CD if desired
+      - echo "Build completed on `date`"
+  post_build:
+    commands:
+      - echo "Entering post_build phase..."
+      # Add any post-build commands here, like pushing Docker images or running integration tests
+
 artifacts:
   files:
-    - '*.jar'  # Look for JAR files in the base directory (target/)
-  base-directory: 'target'
-  name: 'my-app-artifacts'
+    - target/*.jar # Include the generated Spring Boot JAR file
+    # Add any other necessary files for deployment, e.g., appspec.yml for CodeDeploy
+    # - appspec.yml
+  discard-paths: yes # Discard the path structure within the artifact ZIP
