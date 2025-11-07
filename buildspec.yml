@@ -23,6 +23,5 @@ phases:
 
 artifacts:
   files:
-    - target/*.jar
-    - target/*.war
+    - target/restapi_app-0.0.1-SNAPSHOT.jar
   discard-paths: yes
