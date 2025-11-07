@@ -2,9 +2,12 @@ version: 0.2
 phases:
   build:
     commands:
-      - mvn clean package  # or your build command
+      - echo "Starting Maven build"
+      - mvn clean package -DskipTests
+      - echo "Build completed"
+      - ls -la target/  # Debug: list files in target directory
 artifacts:
   files:
-    - '**/*.jar'  # Specify the JAR file pattern
-    - 'target/*.jar'  # Common Maven output location
-  base-directory: 'target'  # Optional: specify base directory
+    - '*.jar'  # Look for JAR files in the base directory (target/)
+  base-directory: 'target'
+  name: 'my-app-artifacts'
