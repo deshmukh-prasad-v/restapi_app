@@ -21,6 +21,7 @@ phases:
 artifacts:
   files:
     - src/target/restapi_app-0.0.1-SNAPSHOT.jar # Include the generated Spring Boot JAR file
+    - src/target/*.jar
     # Add any other necessary files for deployment, e.g., appspec.yml for CodeDeploy
     # - appspec.yml
   discard-paths: yes # Discard the path structure within the artifact ZIP
