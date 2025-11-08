@@ -7,11 +7,11 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
-		<packaging>jar</packaging> 
 	</parent>
 	<groupId>mssu.in</groupId>
 	<artifactId>restapi_app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging> 
 	<name>restapi_app</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
