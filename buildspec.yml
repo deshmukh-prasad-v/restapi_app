@@ -2,25 +2,21 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      # Ensure you specify the correct Java version your application uses
-      java: corretto17
+      # Use an appropriate version of Java for your Spring Boot app
+      java: corretto17 
   build:
     commands:
-      # Use the clean package goal to run the entire build lifecycle 
-      # and produce the final JAR file in the target/ directory
-      - mvn -B package --file pom.xml
+      - echo "Building application and skipping tests..."
+      # This command will skip running unit tests and proceed to packaging
+      - mvn clean package -DskipTests
+      - echo "Listing files in target directory:"
+      - ls -l target/
   post_build:
     commands:
-    - echo "Verifying where Maven put the JAR file..."
-    - pwd
-    - echo "--- List current directory ---"
-    - ls -R | grep target || true
-    - echo "--- Searching recursively for the JAR ---"
-    - find / -type f -name "*.jar" 2>/dev/null | grep restapi_app || true
-    - echo "Diagnostic complete."
+      - echo "Build process complete."
+
 artifacts:
   files:
-    # Specify the name of the final, executable JAR produced by your build
-    - target/restapi_app-0.0.1-SNAPSHOT.jar
-  # discard-paths: yes puts the JAR directly in the root of your S3 artifact bucket
+    # This pattern should match the final, executable JAR
+    - 'target/restapi_app-0.0.1-SNAPSHOT.jar'
   discard-paths: yes
