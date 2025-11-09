@@ -18,5 +18,5 @@ phases:
 artifacts:
   files:
     # This pattern should match the final, executable JAR
-    - 'target/restapi_app-0.0.1-SNAPSHOT.jar'
+    - **/*.jar
   discard-paths: yes
